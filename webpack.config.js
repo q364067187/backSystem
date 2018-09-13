@@ -14,8 +14,9 @@ appConfig.proxyDev.forEach(function(item, index){
 });
 
 module.exports = {
-    entry: path.resolve(__dirname, 'app/index.jsx'),
+    entry: path.resolve(__dirname, 'src/index.jsx'),
     output: {
+        path: __dirname + "/dist",
         filename: "bundle.js"
     },
     resolve: common.resolve,
@@ -23,7 +24,7 @@ module.exports = {
         rules: [
             {
                 test: /\.(js|jsx)?$/, // test 去判断是否为.js或.jsx,是的话就进行es6和jsx的编译
-                exclude: /(node_modules|bower_components)/,
+                exclude: /(node_modules)/,
                 loader: 'babel-loader'
             },
             {
@@ -43,7 +44,7 @@ module.exports = {
             },
             {
                 test: /\.(jpg|jpeg|gif|bmp|png|webp)?$/i,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /(node_modules)/,
                 loader: 'file-loader',
                 options: {
                     name: 'images/[name].[ext]'
@@ -51,7 +52,7 @@ module.exports = {
             },
             {
                 test: /\.(woff|woff2|svg|ttf|eot)?$/i,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /(node_modules)/,
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]'
@@ -59,7 +60,7 @@ module.exports = {
             },
             {
                 test: /\.(ico)?$/i,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /(node_modules)/,
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]'

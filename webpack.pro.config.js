@@ -3,51 +3,22 @@ var path              = require('path');
 var fs                = require("fs");
 var webpack           = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var ManifestPlugin    = require('webpack-manifest-plugin');
 var common            = require('./webpack.common.js');
 
 module.exports = {
-    devtool: 'false',
     entry: {
-        app: path.resolve(__dirname, 'app/index.jsx'),
+        app: path.resolve(__dirname, 'src/index.jsx'),
         // 将 第三方依赖 单独打包
         vendor: [
-            'jsApi',
             'react',
             'react-dom',
             'react-redux',
             'react-router-dom',
             'redux',
-            'react-addons-pure-render-mixin',
             'es6-promise',
             'whatwg-fetch',
-            'braft-editor',
-            'crypto',
 
-            'antd/lib/alert',
-            'antd/lib/button',
-            'antd/lib/checkbox',
-            'antd/lib/col',
-            'antd/lib/collapse',
-            'antd/lib/date-picker',
-            'antd/lib/divider',
-            'antd/lib/dropdown',
-            'antd/lib/form',
-            'antd/lib/icon',
-            'antd/lib/input',
-            'antd/lib/layout',
-            'antd/lib/menu',
-            'antd/lib/message',
-            'antd/lib/modal',
-            'antd/lib/pagination',
-            'antd/lib/radio',
-            'antd/lib/row',
-            'antd/lib/select',
-            'antd/lib/spin',
-            'antd/lib/table',
-            'antd/lib/tooltip',
-            'antd/lib/tree',
-            'antd/lib/upload',
+            // 'antd/lib/button',
         ]
     },
     output: {
@@ -122,11 +93,6 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             filename: '[name].js?v=[chunkhash:8]'
-        }),
-
-        // 生成一个json文件记录文件md5值
-        new ManifestPlugin({
-
         }),
 
         // 可在业务 js 代码中使用 __TYPE__ 判断 开发/测试/生产 环境
