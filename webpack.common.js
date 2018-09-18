@@ -12,18 +12,20 @@ module.exports = {
         extensions: ['.js', '.jsx'],
         // 别名
         alias: {
-            appConfig : path.resolve(__dirname, './appConfig.js'),
+            SRC       : path.resolve(__dirname, './src'),
+            APPCONFIG : path.resolve(__dirname, './appConfig.js'),
         }
     },
     plugins: [
         // 当模块使用这些变量的时候,wepback会自动加载。
         new webpack.ProvidePlugin({
-            appConfig : 'appConfig',
+            APPCONFIG : 'APPCONFIG',
         }),
 
         // html 模板插件
         new HtmlWebpackPlugin({
             template: __dirname + '/src/index.html',
+            favicon: './favicon.ico'
         }),
 
         // postcss设置

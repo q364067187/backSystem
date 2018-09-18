@@ -38,6 +38,7 @@
     "antd": "^3.9.2",
     "es6-promise": "^3.2.1",
     "react": "^16.2.0",
+    "react-addons-pure-render-mixin": "^15.3.1",
     "react-dom": "^16.2.0",
     "react-redux": "^4.4.5",
     "react-router-dom": "^4.2.2",

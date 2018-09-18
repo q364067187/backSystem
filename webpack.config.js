@@ -16,7 +16,6 @@ appConfig.proxyDev.forEach(function(item, index){
 module.exports = {
     entry: path.resolve(__dirname, 'src/index.jsx'),
     output: {
-        path: __dirname + "/dist",
         filename: "bundle.js"
     },
     resolve: common.resolve,
