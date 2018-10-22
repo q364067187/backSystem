@@ -87,7 +87,7 @@ module.exports = {
         new webpack.optimize.ModuleConcatenationPlugin(),
 
         // 分离CSS和JS文件
-        new ExtractTextPlugin('[name].css?v=[chunkhash:8]'),
+        new ExtractTextPlugin('[name].css?v=[hash:8]'),
 
         // 提供公共代码
         new webpack.optimize.CommonsChunkPlugin({

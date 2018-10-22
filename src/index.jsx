@@ -1,37 +1,30 @@
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import ReactDOM from 'react-dom';
-import { HashRouter, Router, Route, Switch } from 'react-router-dom';
+import { Provider } from "react-redux";
+import configureStore from "./store/configureStore";
+const store = configureStore();
+
+import { LocaleProvider } from 'antd';
+import zh_CN from 'antd/lib/locale-provider/zh_CN';
+// import 'moment/src/locale/zh-cn';
+
+import { HashRouter, Router } from 'react-router-dom';
 import createHashHistory from 'history/createHashHistory';
+import AppRouter from 'SRC/router/AppRouter';
 let history = createHashHistory();
 
+// 静态资源文件
 import './static/less/base.less';
 
-import Layout from 'SRC/component/Layout';
-import Home from 'SRC/biz/Home';
-
-class App extends React.Component{
-	constructor(props, context) {
-	    super(props, context);
-	    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-	}
-	render(){
-		return (
-			<Router history={history} className="m-wholeHeight">
-				<Layout>
-					<Switch>
-						<Route exact path="/" component={Home} />
-						<Route path="/product" component={Home} />
-					</Switch>
-				</Layout>
-			</Router>
-		);
-	}
-};
-
 ReactDOM.render(
-	<HashRouter>
-		<App />
-	</HashRouter>,
+	<Provider store={store}>
+		<LocaleProvider locale={zh_CN}>
+			<HashRouter>
+				<Router history={history}>
+					<AppRouter />
+				</Router>
+			</HashRouter>
+		</LocaleProvider>
+	</Provider>,
 	document.getElementById('root')
 );

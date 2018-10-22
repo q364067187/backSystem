@@ -1,0 +1,2 @@
+export const USERNAME = 'USER_CURRENT_USER_NAME';
+export const BACKTOKEN = 'BACK_TOKEN';

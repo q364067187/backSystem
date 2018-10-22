@@ -14,12 +14,14 @@ module.exports = {
         alias: {
             SRC       : path.resolve(__dirname, './src'),
             APPCONFIG : path.resolve(__dirname, './appConfig.js'),
+            JSAPI     : path.resolve(__dirname, './src/config/jsApi.js')
         }
     },
     plugins: [
         // 当模块使用这些变量的时候,wepback会自动加载。
         new webpack.ProvidePlugin({
             APPCONFIG : 'APPCONFIG',
+            JSAPI     : 'JSAPI',
         }),
 
         // html 模板插件

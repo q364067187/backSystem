@@ -1,0 +1,39 @@
+.m-index-show{
+	display: flex;
+	.u-show-item{
+		width: 200px;
+		height: 200px;
+		padding: 20px;
+		margin-right: 30px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #fff;
+		flex-direction: column;
+		opacity: .9;
+		transition: all .3s;
+		&.s-brown{
+			background: #f0ad4e;
+		}
+		&.s-red{
+			background: #f0433d;
+		}
+		&.s-green{
+			background: #5bbf58;
+		}
+		.u-count{
+			font-size: 50px;
+			line-height: 60px;
+		}
+		.anticon {
+			margin-right: 5px;
+		}
+		.u-name{
+			margin-top: 10px;
+		}
+		&:hover{
+			opacity: 1;
+			transform: scale(1.08);
+		}
+	}
+}

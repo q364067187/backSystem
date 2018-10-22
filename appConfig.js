@@ -1,17 +1,13 @@
 // 公用代理
 var proxyCommon = [
 	{
-		server: '/v1/upload',
-		target: 'https://upload.yunbay.com'
-	}, {
-		server: '/backend',
-		target: 'https://product.yunbay.com'
+		server: '/manage',
+		target: 'http://admintest.happymmall.com'
 	}
 ];
 
 const appConfig = {
-	normalRestPath: '/v1',
-	restPath: '/backend',
+	restPath: '/manage',
 
 	// 开发端口
 	portDev: 1001,

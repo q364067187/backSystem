@@ -33,16 +33,29 @@ class SiderComponent extends React.Component {
 						</NavLink>
 					</Menu.Item>
 					<SubMenu
-						key="sub1"
+						key="sub_pro"
 						title={
 							<span>
-								<Icon type="shop" />
+								<Icon type="pushpin" theme="outlined" />
 								<span>商品</span>
 							</span>
 						}
 						>
-						<Menu.Item key="sub1-1">
+						<Menu.Item key="sub_pro_manage">
 							<NavLink replace className="u-nav-link" activeClassName="s-nav-cur" to="/product">商品管理</NavLink>
+						</Menu.Item>
+					</SubMenu>
+					<SubMenu
+						key="sub_user"
+						title={
+							<span>
+								<Icon type="user" theme="outlined" />
+								<span>用户</span>
+							</span>
+						}
+						>
+						<Menu.Item key="sub_user_list">
+							<NavLink replace className="u-nav-link" activeClassName="s-nav-cur" to="/user">用户列表</NavLink>
 						</Menu.Item>
 					</SubMenu>
 				</Menu>
@@ -57,7 +70,9 @@ class SiderComponent extends React.Component {
 		let href = location.href;
 		let openKeys = [];
 		if(/\/product/.test(href)){
-			openKeys = ['sub1'];
+			openKeys = ['sub_pro'];
+		}else if(/\/user/.test(href)){
+			openKeys = ['sub_user'];
 		}
 		this.setState({
 			openKeys

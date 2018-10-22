@@ -18,11 +18,13 @@ class LayoutComponent extends React.Component {
 		};
 	}
 	render() {
+		const { collapsed } = this.state;
+		const { username } = this.props.userInfo;
 		return (
 			<Layout className="g-layout">
-				<Sider collapsed={this.state.collapsed} />
+				<Sider collapsed={collapsed} />
 				<Layout>
-					<Header collapsed={this.state.collapsed} fnToggle={this.toggle.bind(this)} />
+					<Header username={username} collapsed={collapsed} fnToggle={this.fnToggle.bind(this)} fnLoginout={this.props.fnLoginout} />
 					<Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
 						{this.props.children}
 					</Content>
@@ -30,8 +32,8 @@ class LayoutComponent extends React.Component {
 			</Layout>
 		);
 	}
-	// 切换侧边栏
-	toggle() {
+	// 展开收缩侧边栏
+	fnToggle() {
 		this.setState({
 			collapsed: !this.state.collapsed,
 		});
