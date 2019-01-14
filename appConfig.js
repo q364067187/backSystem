@@ -1,13 +1,20 @@
+// 配置
+
 // 公用代理
-var proxyCommon = [
+const proxyCommon = [
 	{
 		server: '/manage',
 		target: 'http://admintest.happymmall.com'
 	}
 ];
 
+const restPath = '/manage';
+
 const appConfig = {
-	restPath: '/manage',
+	restPath,
+
+	// token cookie保存天数
+	tokenDay: 1,
 
 	// 开发端口
 	portDev: 1001,

@@ -1,0 +1,220 @@
+/*
+LESS变量关于图标编译状态的信息，存储在原始文件名下
+
+.icon-home {
+  width: @icon-home-width;
+}
+
+以下是单个图标包含的所有信息变量
+@icon-home: x y offset_x offset_y width height total_width total_height image_path name;
+
+以下这块，我们提供了它的雪碧图样式信息
+@spritesheet: width height image @spritesheet-sprites;
+*/
+@empty-account-name: 'empty-account';
+@empty-account-x: 0px;
+@empty-account-y: 0px;
+@empty-account-offset-x: 0px;
+@empty-account-offset-y: 0px;
+@empty-account-width: 150px;
+@empty-account-height: 150px;
+@empty-account-total-width: 150px;
+@empty-account-total-height: 1110px;
+@empty-account-image: '../images/sprite.png';
+@empty-account: 0px 0px 0px 0px 150px 150px 150px 1110px '../images/sprite.png' 'empty-account';
+@empty-dividend-name: 'empty-dividend';
+@empty-dividend-x: 0px;
+@empty-dividend-y: 160px;
+@empty-dividend-offset-x: 0px;
+@empty-dividend-offset-y: -160px;
+@empty-dividend-width: 150px;
+@empty-dividend-height: 150px;
+@empty-dividend-total-width: 150px;
+@empty-dividend-total-height: 1110px;
+@empty-dividend-image: '../images/sprite.png';
+@empty-dividend: 0px 160px 0px -160px 150px 150px 150px 1110px '../images/sprite.png' 'empty-dividend';
+@empty-network-name: 'empty-network';
+@empty-network-x: 0px;
+@empty-network-y: 320px;
+@empty-network-offset-x: 0px;
+@empty-network-offset-y: -320px;
+@empty-network-width: 150px;
+@empty-network-height: 150px;
+@empty-network-total-width: 150px;
+@empty-network-total-height: 1110px;
+@empty-network-image: '../images/sprite.png';
+@empty-network: 0px 320px 0px -320px 150px 150px 150px 1110px '../images/sprite.png' 'empty-network';
+@empty-nothing-name: 'empty-nothing';
+@empty-nothing-x: 0px;
+@empty-nothing-y: 480px;
+@empty-nothing-offset-x: 0px;
+@empty-nothing-offset-y: -480px;
+@empty-nothing-width: 150px;
+@empty-nothing-height: 150px;
+@empty-nothing-total-width: 150px;
+@empty-nothing-total-height: 1110px;
+@empty-nothing-image: '../images/sprite.png';
+@empty-nothing: 0px 480px 0px -480px 150px 150px 150px 1110px '../images/sprite.png' 'empty-nothing';
+@empty-order-name: 'empty-order';
+@empty-order-x: 0px;
+@empty-order-y: 640px;
+@empty-order-offset-x: 0px;
+@empty-order-offset-y: -640px;
+@empty-order-width: 150px;
+@empty-order-height: 150px;
+@empty-order-total-width: 150px;
+@empty-order-total-height: 1110px;
+@empty-order-image: '../images/sprite.png';
+@empty-order: 0px 640px 0px -640px 150px 150px 150px 1110px '../images/sprite.png' 'empty-order';
+@empty-reward-name: 'empty-reward';
+@empty-reward-x: 0px;
+@empty-reward-y: 800px;
+@empty-reward-offset-x: 0px;
+@empty-reward-offset-y: -800px;
+@empty-reward-width: 150px;
+@empty-reward-height: 150px;
+@empty-reward-total-width: 150px;
+@empty-reward-total-height: 1110px;
+@empty-reward-image: '../images/sprite.png';
+@empty-reward: 0px 800px 0px -800px 150px 150px 150px 1110px '../images/sprite.png' 'empty-reward';
+@empty-service-name: 'empty-service';
+@empty-service-x: 0px;
+@empty-service-y: 960px;
+@empty-service-offset-x: 0px;
+@empty-service-offset-y: -960px;
+@empty-service-width: 150px;
+@empty-service-height: 150px;
+@empty-service-total-width: 150px;
+@empty-service-total-height: 1110px;
+@empty-service-image: '../images/sprite.png';
+@empty-service: 0px 960px 0px -960px 150px 150px 150px 1110px '../images/sprite.png' 'empty-service';
+@spritesheet-width: 150px;
+@spritesheet-height: 1110px;
+@spritesheet-image: '../images/sprite.png';
+@spritesheet-sprites: @empty-account @empty-dividend @empty-network @empty-nothing @empty-order @empty-reward @empty-service;
+@spritesheet: 150px 1110px '../images/sprite.png' @spritesheet-sprites;
+
+/*
+假如预期使用于数组变量
+
+.icon-home {
+  .sprite-width(@icon-home);
+}
+.icon-email {
+  .sprite(@icon-email);
+}
+
+举个html使用的例子：
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+改变`display`(比如`display: inline-block;`),我们建议用来做公用css样式：
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+.sprite-width(@sprite) {
+  width: extract(@sprite, 5);
+}
+
+.sprite-height(@sprite) {
+  height: extract(@sprite, 6);
+}
+
+.sprite-position(@sprite) {
+  @sprite-offset-x: extract(@sprite, 3);
+  @sprite-offset-y: extract(@sprite, 4);
+  background-position: @sprite-offset-x @sprite-offset-y;
+}
+
+.sprite-image(@sprite) {
+  @sprite-image: extract(@sprite, 9);
+  @sprite-image-bare: ~`"@{sprite-image}".slice(1, -1)`;
+  background-image: url(@sprite-image-bare);
+  background-size: extract(@sprite, 7) extract(@sprite, 8);
+}
+
+.sprite(@sprite) {
+  .sprite-image(@sprite);
+  .sprite-position(@sprite);
+  .sprite-width(@sprite);
+  .sprite-height(@sprite);
+}
+
+/*
+这个`.sprites`方法通常输出完全相同的css模版
+但是可以覆盖在less里
+
+一定要运行的时候，你至少要有2个sprites
+如果只运行单个sprite，会有参考错误
+
+.sprites(@spritesheet-sprites);
+*/
+.sprites(@sprites, @i: 1) when (@i <= length(@sprites)) {
+  @sprite: extract(@sprites, @i);
+  @sprite-name: e(extract(@sprite, 10));
+  .@{sprite-name} {
+    .sprite(@sprite);
+  }
+  .sprites(@sprites, @i + 1);
+}
+
+
+/*
+依次列出所有预设icon
+ */
+.icon-empty-account {
+  background-image: url(../images/sprite.png);
+  background-size: 150px 1110px;
+  background-position: 0px 0px;
+  width: 150px;
+  height: 150px;
+}
+.icon-empty-dividend {
+  background-image: url(../images/sprite.png);
+  background-size: 150px 1110px;
+  background-position: 0px -160px;
+  width: 150px;
+  height: 150px;
+}
+.icon-empty-network {
+  background-image: url(../images/sprite.png);
+  background-size: 150px 1110px;
+  background-position: 0px -320px;
+  width: 150px;
+  height: 150px;
+}
+.icon-empty-nothing {
+  background-image: url(../images/sprite.png);
+  background-size: 150px 1110px;
+  background-position: 0px -480px;
+  width: 150px;
+  height: 150px;
+}
+.icon-empty-order {
+  background-image: url(../images/sprite.png);
+  background-size: 150px 1110px;
+  background-position: 0px -640px;
+  width: 150px;
+  height: 150px;
+}
+.icon-empty-reward {
+  background-image: url(../images/sprite.png);
+  background-size: 150px 1110px;
+  background-position: 0px -800px;
+  width: 150px;
+  height: 150px;
+}
+.icon-empty-service {
+  background-image: url(../images/sprite.png);
+  background-size: 150px 1110px;
+  background-position: 0px -960px;
+  width: 150px;
+  height: 150px;
+}

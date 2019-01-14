@@ -1,0 +1,117 @@
+/***** -----   扩展样式   -----*****/
+.fl { float: left; display: inline; }
+.fr { float: right; display: inline; }
+.fn { float: none; }
+.dn,
+.dsn { display: none; }
+.di { display: inline; }
+.db { display: block; }
+.dib { display: inline-block; }
+.tal { text-align: left; }
+.tac { text-align: center; }
+.tar { text-align: right; }
+.por { position: relative; }
+.poa { position: absolute; }
+.pof { position: fixed; }
+.poss { position: static; }
+.fwb { font-weight: bold; }
+.fwn { font-weight: normal; }
+.mt0 { margin-top: 0 !important; }
+.mb0 { margin-bottom: 0 !important; }
+.ml0 { margin-left: 0 !important; }
+.mr0 { margin-right: 0 !important; }
+.tansno { transition: none; }
+.tansall { transition: all .3s; }
+.text,
+.u-text { display: inline-block; vertical-align: middle; }
+.icon,
+.u-icon { display: inline-block; vertical-align: middle; }
+
+/* 预设颜色 */
+.cwhite { color: #fff; }
+.cblack { color: #000; }
+.c333 { color: #333; }
+.c666 { color: #666; }
+.c999 { color: #999; }
+.caaa { color: #aaa; }
+.cbbb { color: #bbb; }
+.cccc { color: #ccc; }
+.cddd { color: #ddd; }
+.ceee { color: #eee; }
+.cred { color: #f00; }
+.corange { color: #f60; }
+.cyellow { color: #ff0; }
+.cgreen { color: #0f0; }
+.cblue { color: #00f; }
+
+.u-impor{
+	color: @primary-color;
+}
+
+.u-yes{
+	&, &:hover{
+		color: @green-6;
+	}
+}
+.u-no{
+	&, &:hover{
+		color: @error-color;
+	}
+}
+.u-minor{
+	color: @normal-color;
+}
+.u-light{
+	color: @highlight-color;
+}
+
+.mt-normal{
+	margin-top: 24px;
+}
+.mb-normal{
+	margin-bottom: 24px;
+}
+.ml-normal{
+	margin-left: 24px;
+}
+.mr-normal{
+	margin-right: 24px;
+}
+
+// 背景颜色
+// 默认颜色
+.u-back-primary{
+	background: @primary-color!important;
+	color: #fff!important;
+	.ant-table-tbody > tr:hover > &{
+		background: @primary-4!important;
+	}
+}
+// 蓝色1
+.u-back-blue-1{
+	background: @blue-1!important;
+	.ant-table-tbody > tr:hover > &{
+		background: @blue-2!important;
+	}
+}
+// 蓝色1 - 减淡50%
+.u-back-blue-1-50{
+	background: tint(@blue-1, 50%)!important;
+	.ant-table-tbody > tr:hover > &{
+		background: tint(@blue-2, 50%)!important;
+	}
+}
+// 黄色1
+.u-back-gold-1{
+	background: @gold-1!important;
+	.ant-table-tbody > tr:hover > &{
+		background: @gold-2!important;
+	}
+}
+// 黄色1 - 减淡50%
+.u-back-gold-1-50{
+	background: tint(@gold-1, 50%)!important;
+	.ant-table-tbody > tr:hover > &{
+		background: tint(@gold-2, 50%)!important;
+	}
+}

@@ -2,10 +2,10 @@
 var path      = require('path');
 var webpack   = require('webpack');
 var common    = require('./webpack.common.js');
-var appConfig = require('./appConfig.js');
+var APPCONFIG = require('./appConfig.js');
 var proxy     = {};
 
-appConfig.proxyDev.forEach(function(item, index){
+APPCONFIG.proxyDev.forEach(function(item, index){
     proxy[item.server] = {
         target: item.target,
         secure: false,
@@ -14,18 +14,13 @@ appConfig.proxyDev.forEach(function(item, index){
 });
 
 module.exports = {
-    entry: path.resolve(__dirname, 'src/index.jsx'),
+    entry: common.entry,
     output: {
-        filename: "bundle.js"
+        filename: "[name].js"
     },
     resolve: common.resolve,
     module: {
-        rules: [
-            {
-                test: /\.(js|jsx)?$/, // test 去判断是否为.js或.jsx,是的话就进行es6和jsx的编译
-                exclude: /(node_modules)/,
-                loader: 'babel-loader'
-            },
+        rules: common.module.rules.concat([
             {
                 test: /\.(less|css)?$/,
                 use: [
@@ -40,42 +35,15 @@ module.exports = {
                         }
                     }
                 ]
-            },
-            {
-                test: /\.(jpg|jpeg|gif|bmp|png|webp)?$/i,
-                exclude: /(node_modules)/,
-                loader: 'file-loader',
-                options: {
-                    name: 'images/[name].[ext]'
-                }
-            },
-            {
-                test: /\.(woff|woff2|svg|ttf|eot)?$/i,
-                exclude: /(node_modules)/,
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]'
-                }
-            },
-            {
-                test: /\.(ico)?$/i,
-                exclude: /(node_modules)/,
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]'
-                }
             }
-        ]
+        ])
     },
     plugins: common.plugins.concat([
-        // 可在业务 js 代码中使用 __TYPE__ 判断 开发/测试/生产 环境
-        new webpack.DefinePlugin({
-            __TYPE__: JSON.stringify(process.env.NODE_ENV)
-        })
+
     ]),
     devServer: {
         proxy              : proxy,
-        port               : appConfig.portDev,         // 端口号
+        port               : APPCONFIG.portDev,         // 端口号
         contentBase        : "./",                      // 本地服务器所加载的页面所在的目录
         historyApiFallback : true,                      // 不跳转
         inline             : true,                      // 实时刷新

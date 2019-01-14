@@ -1,0 +1,15 @@
+// 获取base
+@import "../../static/less/theme.less";
+
+// 编辑器样式
+.BraftEditor-container{
+	// padding: 0;
+	border: 1px solid @border-color-base;
+	.has-error &{
+		border-color: @error-color;
+	}
+}
+
+.braft-modal{
+	z-index: 5;
+}

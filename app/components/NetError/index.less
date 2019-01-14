@@ -1,0 +1,36 @@
+// 获取base
+@import "../../static/less/theme.less";
+
+// 图标加文字提示
+.m-prompt-part{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 30px 0;
+	flex-direction: column;
+	a{
+		color: @primary-color;
+	}
+	.u-title{
+		color: @text-tit;
+		font-size: 14px;
+		line-height: 24px;
+		padding-top: 5px;
+	}
+	.u-info{
+		color: @text-minor;
+		font-size: 12px;
+		line-height: 22px;
+	}
+	&.s-noresult{
+		.u-title{
+			font-size: 16px;
+			line-height: 26px;
+			color: @text-minor;
+		}
+	}
+	&.s-inline{
+		padding: 0;
+		display: inline;
+	}
+}

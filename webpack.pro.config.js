@@ -3,24 +3,12 @@ var path              = require('path');
 var fs                = require("fs");
 var webpack           = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var ManifestPlugin    = require('webpack-manifest-plugin');
 var common            = require('./webpack.common.js');
 
 module.exports = {
-    entry: {
-        app: path.resolve(__dirname, 'src/index.jsx'),
-        // 将 第三方依赖 单独打包
-        vendor: [
-            'react',
-            'react-dom',
-            'react-redux',
-            'react-router-dom',
-            'redux',
-            'es6-promise',
-            'whatwg-fetch',
-
-            // 'antd/lib/button',
-        ]
-    },
+    devtool: 'false',
+    entry: common.entry,
     output: {
         path: __dirname + "/" + process.env.NODE_ENV,
         filename: "[name].js?v=[chunkhash:8]",
@@ -28,12 +16,7 @@ module.exports = {
     },
     resolve: common.resolve,
     module: {
-        rules: [
-            {
-                test: /\.(js|jsx)?$/, // test 去判断是否为.js或.jsx,是的话就是进行es6和jsx的编译
-                exclude: /(node_modules|bower_components)/,
-                loader: 'babel-loader'
-            },
+        rules: common.module.rules.concat([
             {
                 test: /\.(less|css)?$/,
                 use: ExtractTextPlugin.extract({
@@ -50,32 +33,8 @@ module.exports = {
                         }
                     ]
                 })
-            },
-            {
-                test: /\.(jpg|jpeg|gif|bmp|png|webp)?$/i,
-                exclude: /(node_modules|bower_components)/,
-                loader: 'file-loader',
-                options: {
-                    name: 'images/[name].[ext]?v=[hash:8]'
-                }
-            },
-            {
-                test: /\.(woff|woff2|svg|ttf|eot)?$/i,
-                exclude: /(node_modules|bower_components)/,
-                loader: 'file-loader',
-                options: {
-                    name: 'fonts/[name].[ext]?v=[hash:8]'
-                }
-            },
-            {
-                test: /\.(ico)?$/i,
-                exclude: /(node_modules|bower_components)/,
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]?v=[hash:8]'
-                }
             }
-        ]
+        ])
     },
     plugins: common.plugins.concat([
         // webpack 内置的 banner-plugin
@@ -95,9 +54,9 @@ module.exports = {
             filename: '[name].js?v=[chunkhash:8]'
         }),
 
-        // 可在业务 js 代码中使用 __TYPE__ 判断 开发/测试/生产 环境
-        new webpack.DefinePlugin({
-            __TYPE__: JSON.stringify(process.env.NODE_ENV)
+        // 生成一个json文件记录文件md5值
+        new ManifestPlugin({
+
         })
     ])
 };

@@ -1,0 +1,39 @@
+// 对antd改写
+
+// 搜索框，设置下填充距离
+.ant-advanced-search-form{
+	padding-bottom: 30px;
+}
+
+// 上传图片外层，设一个最小高度占位
+.ant-upload-list-wrap{
+	min-height: 112px;
+	// 为只读时图片样式
+	.u-img-wrap{
+		display: flex;
+		flex-wrap: wrap;
+		.u-img-cell{
+			width: 112px;
+			height: 112px;
+			border: 1px solid #ccc;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-right: 12px;
+			img{
+				display: block;
+				max-width: 90%;
+				max-height: 90%;
+				width: auto;
+				height: auto;
+			}
+		}
+	}
+}
+
+// 弹层预览的关闭X
+.ant-modal-close-x{
+	width: 32px;
+	height: 32px;
+	line-height: 32px;
+}
