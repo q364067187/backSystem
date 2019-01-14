@@ -60,6 +60,19 @@ class SiderComponent extends React.Component {
 							<NavLink replace className="u-nav-link" activeClassName="s-nav-cur" to="/user">用户列表</NavLink>
 						</Menu.Item>
 					</SubMenu>
+					<SubMenu
+						key="sub-order"
+						title={
+							<span>
+								<Icon type="file-text" />
+								<span>订单</span>
+							</span>
+						}
+						>
+						<Menu.Item key="sub-order-index">
+							<NavLink replace className="u-nav-link" activeClassName="s-nav-cur" to="/order">订单列表</NavLink>
+						</Menu.Item>
+					</SubMenu>
 				</Menu>
 			</Sider>
 		);
@@ -75,6 +88,8 @@ class SiderComponent extends React.Component {
 			openKeys = ['sub-pro'];
 		}else if(/\/user/.test(href)){
 			openKeys = ['sub-user'];
+		}else if(/\/order/.test(href)){
+			openKeys = ['sub-order'];
 		}
 		this.setState({
 			openKeys

@@ -56,8 +56,8 @@ class DataTable extends React.Component {
 	perPageChange(value){
 		setTimeout(() => {
 			this.props.getData({
-				page_size: value,
-				page: 1
+				pageSize: value,
+				pageNum: 1
 			});
 		}, 300);
 	}

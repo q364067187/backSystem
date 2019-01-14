@@ -8,6 +8,7 @@ import Notfound from 'APP/biz/404';
 import Home          from 'APP/biz/Home';					// 首页
 import ProductRouter from 'APP/biz/Product/router';			// 产品
 import User          from 'APP/biz/User';					// 用户
+import Order         from 'APP/biz/Order/router';			// 订单
 
 class AppRouter extends React.Component {
 	constructor(props){
@@ -25,6 +26,8 @@ class AppRouter extends React.Component {
 					<Route path="/product" component={ProductRouter} />
 					{/*用户*/}
 					<Route path="/user" component={User} />
+					{/*订单*/}
+					<Route path="/order" component={Order} />
 					<Route component={Notfound} />
 				</Switch>
 			</App>

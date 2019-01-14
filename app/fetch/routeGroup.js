@@ -16,6 +16,12 @@ export default {
 	// 用户
 	listUser: restPath + '/user/list.do',
 
+	// 订单
+	listOrder   : restPath + '/order/list.do',
+	searchOrder : restPath + '/order/search.do',
+	infoOrder   : restPath + '/order/detail.do',
+	sendOrder   : restPath + '/order/send_goods.do',
+
 	// 登录
 	login: restPath + '/user/login.do',
 

@@ -16,7 +16,7 @@ class User extends React.Component {
             	<Title title="用户列表" />
 				<List />
             </div>
-	    )
+	    );
 	}
 }
 
