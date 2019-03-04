@@ -1,10 +1,9 @@
 // fetch配置
 import { message } from 'antd';
 
-import { loginOut }    from 'APP/config/pageApi';
+import { loginOut } from 'APP/config/pageApi';
 
 // 得到header
-// appid:   api的appid
 const getHeader = (
 	{
 		formData,

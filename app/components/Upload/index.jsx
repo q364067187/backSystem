@@ -2,6 +2,8 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { Upload, Icon, Modal, message, Button } from 'antd';
 
+import './index.less';
+
 class UploadComponent extends React.Component {
 	constructor(props, context) {
 		super(props, context);
@@ -15,7 +17,11 @@ class UploadComponent extends React.Component {
 	}
 	render() {
 		const { previewVisible, previewImage, previewAlt, fileList } = this.state;
-		let { disabled,
+		let {
+			disabled,
+			className = '',
+			size = 'normal',
+			promptText = "",
 			maxLength = 1,
 			uploadText = "上传",
 			// 当上传文件到达最大时，是否隐藏上传按钮，默认true
@@ -30,14 +36,15 @@ class UploadComponent extends React.Component {
 		    	<Icon type="upload" /> {uploadText}
 		    </Button>
 		) : (
-			<div>
+			<div className="u-picture-card">
 				<Icon type="plus" />
-				<div className="ant-upload-text">{uploadText}</div>
+				<div className="u-text-main">{uploadText}</div>
+				<div className="u-text-prompt">{promptText}</div>
 			</div>
 		);
 
 		return (
-			<div>
+			<div className={`m-upload-module s-${size} ${className}`}>
 				<Upload
 					customRequest={this.customRequestHandle.bind(this)}
 					accept={accept}

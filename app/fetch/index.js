@@ -97,6 +97,18 @@ export function fet(obj) {
 					reason.explain = '断网';			// 定义错误解释
 					reason.tips    = '请检查您的网络';	// 显示在前台的错误信息
 				}
+			}else if(err.constructor === SyntaxError){
+				// 语法错误
+				reason = {
+					name    : err.name,					// 错误分类名
+					type    : err.name,					// 错误类型
+					message : err.message, 				// 原错误信息
+					explain : '语法错误',				// 定义错误解释
+					scheme  : [
+						'可能是后台返回不是json格式，导致处理出错',
+					],
+					tips    : '服务器错误(SyntaxError)' // 显示在前台的错误信息
+				};
 			}else if(typeof err === 'string'){
 				// 服务器返回原因
 				let errArr = err.split(', ');

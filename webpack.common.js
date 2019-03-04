@@ -2,7 +2,7 @@
 var path              = require('path');
 var webpack           = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var SpritesmithPlugin = require('webpack-spritesmith');
+var SpritesmithPlugin = require('lxc-webpack-spritesmith');
 
 module.exports = {
     // antd主题颜色
@@ -12,7 +12,7 @@ module.exports = {
     entry: {
         // 将 第三方依赖 单独打包
         vendor: [
-            'jsApi',
+            'lxc-js-api',
             'react',
             'react-dom',
             'react-redux',
@@ -22,37 +22,35 @@ module.exports = {
             'es6-promise',
             'whatwg-fetch',
             'braft-editor',
-            // 'crypto',
-            // 'react-html-table-to-excel',
             // 'moment',
 
             // 'antd/lib/alert',
-            // 'antd/lib/back-top',
-            // 'antd/lib/button',
+            'antd/lib/back-top',
+            'antd/lib/button',
             // 'antd/lib/checkbox',
-            // 'antd/lib/col',
+            'antd/lib/col',
             // 'antd/lib/collapse',
             // 'antd/lib/date-picker',
-            // 'antd/lib/divider',
-            // 'antd/lib/dropdown',
-            // 'antd/lib/form',
-            // 'antd/lib/icon',
-            // 'antd/lib/input',
-            // 'antd/lib/layout',
-            // 'antd/lib/menu',
-            // 'antd/lib/message',
-            // 'antd/lib/modal',
+            'antd/lib/divider',
+            'antd/lib/dropdown',
+            'antd/lib/form',
+            'antd/lib/icon',
+            'antd/lib/input',
+            'antd/lib/layout',
+            'antd/lib/menu',
+            'antd/lib/message',
+            'antd/lib/modal',
             // 'antd/lib/pagination',
             // 'antd/lib/radio',
-            // 'antd/lib/row',
-            // 'antd/lib/select',
+            'antd/lib/row',
+            'antd/lib/select',
             // 'antd/lib/switch',
-            // 'antd/lib/spin',
-            // 'antd/lib/table',
+            'antd/lib/spin',
+            'antd/lib/table',
             // 'antd/lib/tabs',
             // 'antd/lib/tooltip',
             // 'antd/lib/tree',
-            // 'antd/lib/upload',
+            'antd/lib/upload',
         ],
         app: path.resolve(__dirname, 'app/index.jsx')
     },
@@ -94,7 +92,6 @@ module.exports = {
         // 别名
         alias: {
             APP          : path.resolve(__dirname, './app'),                          // APP目录
-            jsApi        : path.resolve(__dirname, './app/config/jsApi.js'),          // 公用js方法
             appConfig    : path.resolve(__dirname, './appConfig.js'),                 // 项目配置
             uploadConfig : path.resolve(__dirname, './uploadConfig.js'),              // 上传配置
         }
@@ -102,7 +99,7 @@ module.exports = {
     plugins: [
         // 当模块使用这些变量的时候,wepback会自动加载。
         new webpack.ProvidePlugin({
-            JSAPI        : 'jsApi',
+            JSAPI        : 'lxc-js-api',
             APPCONFIG    : 'appConfig',
             UPLOADCONFIG : 'uploadConfig',
         }),

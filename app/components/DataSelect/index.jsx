@@ -9,7 +9,7 @@ class DataSelect extends React.Component {
 	    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
 	}
 	render() {
-		const { data, loading, hasError, chooseText, loadingText, errorText, emptyText, errorCallback, nameFormat } = this.props;
+		const { data, loading, hasError, chooseText, loadingText, errorText, emptyText, errorCallback, nameFormat = name => name } = this.props;
 		return (
 			<Select
 				{...this.props}

@@ -11,19 +11,6 @@ const colors = require("ansi-colors");
 
 const app = express();
 
-// cookie处理
-const cookie = require('cookie-parser');
-app.use(cookie());
-
-const bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// 缓存设置
-var cacheOptions = {
-    maxAge: 24 * 60 * 60 * 365 * 1000
-};
-app.use('/', express.static(path.resolve(__dirname, type), cacheOptions));
-
 // 根据环境配置不同
 if(type === 'pro'){
     port = APPCONFIG.portPro;
@@ -43,6 +30,19 @@ if(proxyCfg){
         }));
     });
 }
+
+// cookie处理
+const cookie = require('cookie-parser');
+app.use(cookie());
+
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// 缓存设置
+var cacheOptions = {
+    maxAge: 24 * 60 * 60 * 365 * 1000
+};
+app.use('/', express.static(path.resolve(__dirname, type), cacheOptions));
 
 // 启动
 app.listen(port, function(){

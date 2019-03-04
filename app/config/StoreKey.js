@@ -1,2 +1,2 @@
-export const USERNAME = 'USER_CURRENT_USER_NAME';
-export const BACKTOKEN = 'BACK_TOKEN';
+export const USERNAME  = 'STUDY_BACK_USERNAME';
+export const BACKTOKEN = 'STUDY_BACK_TOKEN';
